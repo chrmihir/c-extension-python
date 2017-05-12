@@ -11,6 +11,8 @@ static PyObject* helloworld(PyObject* self, PyObject* args) {
 	if(PyArg_ParseSize() != 2)
 		return Py_Return_None;
 	*/
+	if(PyTuple_Size(args) != 2)
+		return Py_BuildValue("s", "Expected 2 arguments");
 	PyArg_ParseTuple(args,"dd", &angle1, &angle2);
 	double answer = sinusoidOfTwoFunctions(angle1, angle2);
 	return PyFloat_FromDouble(answer);
